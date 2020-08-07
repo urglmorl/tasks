@@ -6,23 +6,22 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ts';
-
-  A: number[];
-  B: number[];
-  C: number[];
-  ResultSet = new Set<number>();
+  A = new Array<number>();
+  B = new Array<number>();
+  C = new Array<number>();
   viewedResult = '';
 
+  // Раскоментировать если нужна реализация не через Set
   public makeResult(): void {
-    this.ResultSet = new Set<number>();
+    const result = new Set<number>();
+    // const result = new Array<number>();
     for (const item of this.A) {
-      if (this.B.includes(item) && !this.C.includes(item)) {
-        this.ResultSet.add(item);
+      if (this.B.includes(item) && !this.C.includes(item) /*&& !result.includes(item)*/) {
+        result.add(item);
+        // result.push(item);
       }
     }
-    console.log(this.ResultSet);
-    this.viewedResult = Array.from(this.ResultSet.values()).join(', ');
+    this.viewedResult = Array.from(result.values()).join(', '); // result.join(', ');
   }
 
 }
