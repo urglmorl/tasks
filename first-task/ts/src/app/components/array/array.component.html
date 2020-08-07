@@ -1,7 +1,7 @@
 <div class="wrapper">
   <h1>Массив {{title}}</h1>
   <div class="array-wrapper">
-    <input class="array-holder" [value]="arrayString | async" [placeholder]='"Массив " + title'>
+    <input class="array-holder" [value]="Array.join(', ')" [placeholder]='"Массив " + title'>
     <button (click)="generateNewArray()">Обновить</button>
     <label>Минимальное значение:</label>
     <input type="text" [(ngModel)]="min">

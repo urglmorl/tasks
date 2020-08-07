@@ -13,7 +13,6 @@ export class ArrayComponent implements OnInit, AfterViewInit {
   min = 0;
   max = 10;
   isUniqueValues = false;
-  arrayString = new BehaviorSubject<string>('');
 
   @Input() title;
   @Input() Array: number[];
@@ -33,7 +32,6 @@ export class ArrayComponent implements OnInit, AfterViewInit {
   public generateNewArray(): void {
     this.Array = this.arrayService.generateNewArray(this.count, this.min, this.max, this.isUniqueValues);
     this.ArrayChange.emit(this.Array);
-    this.arrayString.next(this.Array.join(', '));
     this.cdr.detectChanges();
   }
 }
