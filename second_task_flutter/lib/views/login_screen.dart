@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:second_task_flutter/improvisation_state.dart';
+import 'package:second_task_flutter/models/user.dart';
 import 'package:second_task_flutter/network/api.dart';
 import 'package:second_task_flutter/views/main_screen.dart';
 
@@ -18,6 +19,9 @@ class _LoginState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    loginController.text = 'admin';
+    passwordController.text = 'admin';
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
@@ -66,21 +70,24 @@ class _LoginState extends State<LoginScreen> {
                 color: Colors.blue,
                 child: Text('Login'),
                 onPressed: () async {
-                  /*var user = ImprovisationState.currentUser;
+                  ///Здесь я использовал импровизированный стейт чтобы изменить объект user
+                  var user = ImprovisationState.currentUser;
                   user.login = loginController.text;
                   user.password = passwordController.text;
                   ImprovisationState.currentUser = user;
 
-                  Auth().then((value) {
-                    user.token = value;
-                    ImprovisationState.currentUser = user;*/
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MainScreen()));
-                  /*}, onError: (error) {
+                  /// Недоавторизация (на самом деле мы только получаем токен и переходим по роуту)
+                  Auth().then((User value) {
+                    print(value);
+                    ImprovisationState.currentUser = value;
+                    Navigator.pushNamed(context, MainScreen.routeName);
+                  }, onError: (error) {
+                    /// Блок кода не сработает пока сервер не научится принимать POST
+                    print(error);
                     setState(() {
                       isError = true;
                     });
-                  });*/
+                  });
                 },
               ),
             ),

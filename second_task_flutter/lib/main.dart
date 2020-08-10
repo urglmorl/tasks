@@ -20,16 +20,6 @@ class MyApp extends StatelessWidget {
         MainScreen.routeName: (BuildContext context) => MainScreen(),
         EditScreen.routeName: (BuildContext context) => EditScreen(),
       },
-      onGenerateRoute: (settings) {
-        if (settings.name == EditScreen.routeName) {
-          final id = settings.arguments;
-          return MaterialPageRoute(
-            builder: (context) {
-              return id;
-            },
-          );
-        }
-      },
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
     );
